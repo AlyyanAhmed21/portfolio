@@ -23,6 +23,18 @@ Projects: Chest Cancer Classifier, Facial Emotion ViT.
 Style: Professional, technical, concise.
 `;
 
+
+app.get('/', (req, res) => {
+    const localIndex = path.join(process.cwd(), 'index.html');
+    const bundledIndex = path.join(__dirname, 'index.html');
+    res.sendFile(localIndex, err => {
+        if (!err) return;
+        res.sendFile(bundledIndex, err2 => {
+            if (err2) res.status(404).send('index.html not found');
+        });
+    });
+});
+
 app.post('/chat', async (req, res) => {
     try {
         if (!process.env.GROQ_API_KEY) {
