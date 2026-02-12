@@ -3,13 +3,13 @@ const express = require('express');
 const cors = require('cors');
 const Groq = require('groq-sdk');
 
+const https = require('https');
+const path = require('path');
+
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(express.static(__dirname));
-
-const https = require('https');
-const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+app.use(express.static(path.join(__dirname)));
 const githubUser = process.env.GITHUB_USERNAME || 'AlyyanAhmed21';
 
 const context = `
@@ -25,6 +25,11 @@ Style: Professional, technical, concise.
 
 app.post('/chat', async (req, res) => {
     try {
+        if (!process.env.GROQ_API_KEY) {
+            return res.status(503).json({ reply: "Chat unavailable", details: "Missing GROQ_API_KEY" });
+        }
+
+        const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
         const model = process.env.GROQ_MODEL || "llama3-8b-8192";
         const completion = await groq.chat.completions.create({
             messages: [
@@ -122,4 +127,9 @@ app.get('/github-stats', async (req, res) => {
     }
 });
 
-app.listen(3000, () => console.log('Server running on 3000'));
+if (require.main === module) {
+    const port = process.env.PORT || 3000;
+    app.listen(port, () => console.log(`Server running on ${port}`));
+}
+
+module.exports = app;
