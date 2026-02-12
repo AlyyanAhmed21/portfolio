@@ -1,51 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alyyan Ahmed | AI Architect</title>
-    
-    <!-- Fonts: Futuristic Headings + Clean Body -->
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
 
-    <!-- Libraries (GSAP) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Animation Libraries (Reference Stack) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <!-- VISUAL ENGINE -->
-    <div id="bg"></div> <!-- Vanta Topology Background -->
-    <div class="vignette"></div> <!-- Dark Corners -->
-    <div class="scanline"></div> <!-- Subtle CRT effect -->
+    <!-- Background -->
+    <div id="particles-js"></div>
 
-    <!-- NAVIGATION -->
+    <!-- Navigation -->
     <nav>
-        <div class="logo">ALYYAN<span class="blue">.AI</span></div>
-        <div class="nav-links">
-            <a href="#about">About</a>
-            <a href="#experience">Experience</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact" class="btn-nav">Contact</a>
+        <div class="container nav-container">
+            <!-- Removed Name, kept minimal Branding -->
+            <div class="logo"><span>PORTFOLIO</span></div>
+            <ul class="nav-links">
+                <li><a href="#about">ABOUT</a></li>
+                <li><a href="#experience">EXPERIENCE</a></li>
+                <li><a href="#skills">SKILLS</a></li>
+                <li><a href="#projects">PROJECTS</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
         </div>
     </nav>
 
-    <!-- 1. INTRO / HERO -->
-    <section id="hero">
-        <div class="content-box center-align">
-            <div class="status-badge"><span class="pulse"></span> SYSTEM ONLINE</div>
-            <h1 class="glitch" data-text="ALYYAN AHMED">ALYYAN AHMED</h1>
-            <h2 class="role-text">AI & MLOps Engineer <span class="sep">|</span> Computer Vision Specialist</h2>
-            <p class="hero-sub">
-                Building reliable, production-grade machine learning systems for real-world deployment.
-            </p>
-            <div class="btn-group">
-                <!-- hero buttons removed; floating action icon added to bottom-right -->
+    <!-- 1. HERO -->
+    <section id="hero" class="hero">
+        <div class="container hero-grid">
+            <!-- Left: Text -->
+            <div class="hero-left" data-aos="fade-right" data-aos-duration="1000">
+                <div class="status-badge" data-aos="zoom-in" data-aos-delay="200">
+                    AVAILABLE FOR COLLABORATION
+                </div>
+                <h1>Alyyan<br>Ahmed</h1>
+                <div class="role-text">AI & MLOps Engineer · Computer Vision</div>
+                <p>I design reliable, production-grade ML systems—spanning data pipelines, model training, deployment,
+                    and long-term monitoring—with a focus on real-world impact.</p>
+                <div class="hero-btns" data-aos="fade-up" data-aos-delay="400">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="#contact" class="btn btn-outline">Get in Touch</a>
+                </div>
+            </div>
+
+            <!-- Right: Focus Areas Card -->
+            <div class="hero-right" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                <div class="hero-card">
+                    <span class="card-label">FOCUS AREAS</span>
+                    <div class="focus-tags">
+                        <span class="focus-tag">MLOps</span>
+                        <span class="focus-tag">Computer Vision</span>
+                        <span class="focus-tag">LLMs & RAG</span>
+                        <span class="focus-tag">Production AI</span>
+                    </div>
+
+                    <div class="stats-list">
+                        <div class="stat-row">
+                            <span class="stat-icon"><i class="fas fa-minus"></i><i class="fas fa-minus"></i></span>
+                            <span>Public Repos</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-icon"><i class="fas fa-minus"></i><i class="fas fa-minus"></i></span>
+                            <span>Commits (Last Year)</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-icon"><i class="fas fa-minus"></i><i class="fas fa-minus"></i></span>
+                            <span>Contributions (Last Year)</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -53,11 +91,13 @@
     <!-- 2. ABOUT ME -->
     <section id="about">
         <div class="container">
-            <h2 class="section-title">01. About Me</h2>
-            <div class="about-card">
+            <h2 class="section-title" data-aos="fade-right">About Me</h2>
+            <div class="about-card" data-aos="zoom-in" data-aos-duration="1000">
                 <p class="bio-text">
-                    AI/ML Engineer focused on building reliable, production-grade machine learning systems for real-world
-                    deployment. Strong foundation in machine learning, deep learning, and physics-informed AI, with hands-on
+                    AI/ML Engineer focused on building reliable, production-grade machine learning systems for
+                    real-world
+                    deployment. Strong foundation in machine learning, deep learning, and physics-informed AI, with
+                    hands-on
                     experience taking models from research through production, deployment, and long-term maintenance.
                     Experienced in designing scalable ML architectures, applying robust MLOps practices, and developing
                     maintainable AI systems using industry-standard tools. Driven to solve complex, high-impact problems
@@ -72,20 +112,28 @@
         </div>
     </section>
 
-<!-- 3. WORK EXPERIENCE -->
+    <!-- 3. WORK EXPERIENCE (Full Content Restored) -->
     <section id="experience">
         <div class="container">
-            <h2 class="section-title">02. Work Experience</h2>
+            <h2 class="section-title" data-aos="fade-right">Work Experience</h2>
+
             <div class="timeline">
 
                 <!-- Job 1 -->
-                <div class="experience-item">
+                <div class="experience-item" data-aos="fade-up" data-aos-delay="100">
                     <div class="exp-card">
-                        <div class="exp-date">NOV 2025 - FEB 2026</div>
-                        <h3 class="exp-title">AI Engineer Intern</h3>
-                        <div class="exp-company">iOPTIME Pvt Ltd <span class="loc">Islamabad</span></div>
-                        <ul class="exp-list">
-                            <li>Developed ML models for EV battery analytics achieving <strong>91% prediction accuracy</strong>.</li>
+                        <div class="exp-header">
+                            <div>
+                                <div class="exp-company">iOPTIME Pvt Ltd <span class="loc"
+                                        style="font-size: 0.8em; color: var(--text-dim); font-weight: normal;">|
+                                        Islamabad</span></div>
+                                <div class="exp-role">AI Engineer Intern</div>
+                            </div>
+                            <div class="exp-date">NOV 2025 - FEB 2026</div>
+                        </div>
+                        <ul>
+                            <li>Developed ML models for EV battery analytics achieving <strong>91% prediction
+                                    accuracy</strong>.</li>
                             <li>Worked with ensemble methods (XGBoost) and deep learning (LSTM, Bi-LSTM, PINNs).</li>
                             <li>Built end-to-end ML pipelines including data preprocessing and API endpoints.</li>
                             <li>Collaborated on RAG chatbot-based automated auditing applications.</li>
@@ -94,40 +142,57 @@
                 </div>
 
                 <!-- Job 2 -->
-                <div class="experience-item">
+                <div class="experience-item" data-aos="fade-up" data-aos-delay="200">
                     <div class="exp-card">
-                        <div class="exp-date">JULY 2025 - SEPT 2025</div>
-                        <h3 class="exp-title">AI & Machine Learning Intern</h3>
-                        <div class="exp-company">CSERA (Private) Limited</div>
-                        <ul class="exp-list">
+                        <div class="exp-header">
+                            <div>
+                                <div class="exp-company">CSERA (Private) Limited</div>
+                                <div class="exp-role">AI & Machine Learning Intern</div>
+                            </div>
+                            <div class="exp-date">JULY 2025 - SEPT 2025</div>
+                        </div>
+                        <ul>
                             <li>Contributed to Vision and Gen AI projects, automated data analysis.</li>
-                            <li>Enhanced model accuracy through optimized detection pipelines using <strong>YOLOv8</strong>.</li>
+                            <li>Enhanced model accuracy through optimized detection pipelines using
+                                <strong>YOLOv8</strong>.</li>
                             <li>Supported AI deployment and MLOps integration with PyTorch, MLflow, and FastAPI.</li>
                         </ul>
                     </div>
                 </div>
 
-                                <!-- Job 3 -->
-                <div class="experience-item">
+                <!-- Job 3 -->
+                <div class="experience-item" data-aos="fade-up" data-aos-delay="300">
                     <div class="exp-card">
-                        <div class="exp-date">JUNE 2024 - SEPT 2024</div>
-                        <h3 class="exp-title">UI/UX Design Intern</h3>
-                        <div class="exp-company">Digital Bytes (SMC-Private) Limited</div>
-                        <ul class="exp-list">
+                        <div class="exp-header">
+                            <div>
+                                <div class="exp-company">Digital Bytes</div>
+                                <div class="exp-role">UI/UX Design Intern</div>
+                            </div>
+                            <div class="exp-date">JUNE 2024 - SEPT 2024</div>
+                        </div>
+                        <ul>
                             <li>Designed UI/UX interfaces for AI-based web applications using Flask.</li>
-                            <li>Created visual assets for branding, dashboards, and promotional content with a user-centered design approach.</li>
-                            <li>Recognized for delivering creative, high-quality designs and maintaining consistency across platforms.</li>
+                            <li>Created visual assets for branding, dashboards, and promotional content with a
+                                user-centered design approach.</li>
+                            <li>Recognized for delivering creative, high-quality designs and maintaining consistency
+                                across platforms.</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Job 3 -->
-                <div class="experience-item">
+                <!-- Job 4 -->
+                <div class="experience-item" data-aos="fade-up" data-aos-delay="400">
                     <div class="exp-card">
-                        <div class="exp-date">JULY 2023 - SEPT 2023</div>
-                        <h3 class="exp-title">Machine Learning Intern</h3>
-                        <div class="exp-company">Air University <span class="loc">Islamabad</span></div>
-                        <ul class="exp-list">
+                        <div class="exp-header">
+                            <div>
+                                <div class="exp-company">Air University <span class="loc"
+                                        style="font-size: 0.8em; color: var(--text-dim); font-weight: normal;">|
+                                        Islamabad</span></div>
+                                <div class="exp-role">Machine Learning Intern</div>
+                            </div>
+                            <div class="exp-date">JULY 2023 - SEPT 2023</div>
+                        </div>
+                        <ul>
                             <li>Implemented ML algorithms for anomaly detection in network traffic.</li>
                             <li>Applied predictive analytics to detect cybersecurity threats in large datasets.</li>
                         </ul>
@@ -137,103 +202,107 @@
             </div>
         </div>
     </section>
-    <!-- 4. SKILLS -->
+
+    <!-- 4. SKILLS (Merged with Visual Grid) -->
     <section id="skills">
         <div class="container">
-            <h2 class="section-title">03. My Skills & Tech Stack</h2>
+            <h2 class="section-title" data-aos="fade-right">My Skills & Tech Stack</h2>
 
-            <div class="skills-showcase">
-                <div class="skill-group">
-                    <h3 class="skill-heading">Machine Learning & AI</h3>
-                    <div class="skills-row">
-                        <div class="skill-tile"><i class="fas fa-cogs"></i><span>XGBoost</span></div>
-                        <div class="skill-tile"><i class="fas fa-cogs"></i><span>LightGBM</span></div>
-                        <div class="skill-tile"><i class="fas fa-cogs"></i><span>Random Forest</span></div>
-                        <div class="skill-tile"><i class="fas fa-sliders-h"></i><span>SVM</span></div>
-                        <div class="skill-tile"><i class="fas fa-chart-line"></i><span>Regression</span></div>
-                        <div class="skill-tile"><i class="fas fa-database"></i><span>scikit-learn</span></div>
+            <div class="skills-wrapper">
+
+                <div class="skill-category">
+                    <h3 data-aos="fade-up">Machine Learning & AI</h3>
+                    <div class="skill-grid">
+                        <div class="skill-card" data-aos="zoom-in" data-aos-delay="100">
+                            <i class="fas fa-brain skill-icon"></i><span class="skill-name">XGBoost</span>
+                        </div>
+                        <div class="skill-card" data-aos="zoom-in" data-aos-delay="150">
+                            <i class="fas fa-fire skill-icon"></i><span class="skill-name">LightGBM</span>
+                        </div>
+                        <div class="skill-card" data-aos="zoom-in" data-aos-delay="200">
+                            <i class="fas fa-tree skill-icon"></i><span class="skill-name">Random Forest</span>
+                        </div>
+                        <div class="skill-card" data-aos="zoom-in" data-aos-delay="250">
+                            <i class="fas fa-chart-line skill-icon"></i><span class="skill-name">scikit-learn</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="skill-group">
-                    <h3 class="skill-heading">Deep Learning</h3>
-                    <div class="skills-row">
-                        <div class="skill-tile"><i class="fab fa-python"></i><span>PyTorch</span></div>
-                        <div class="skill-tile"><i class="fas fa-microchip"></i><span>TensorFlow</span></div>
-                        <div class="skill-tile"><i class="fas fa-microchip"></i><span>Keras</span></div>
-                        <div class="skill-tile"><i class="fas fa-brain"></i><span>Neural Networks</span></div>
-                        <div class="skill-tile"><i class="fas fa-brain"></i><span>Vision Transformers</span></div>
-                        <div class="skill-tile"><i class="fas fa-atom"></i><span>PINNs</span></div>
+                <div class="skill-category">
+                    <h3 data-aos="fade-up">Deep Learning</h3>
+                    <div class="skill-grid">
+                        <div class="skill-card" data-aos="zoom-in" data-aos-delay="100">
+                            <i class="fab fa-python skill-icon"></i><span class="skill-name">PyTorch</span>
+                        </div>
+                        <div class="skill-card" data-aos="zoom-in" data-aos-delay="150">
+                            <i class="fas fa-microchip skill-icon"></i><span class="skill-name">TensorFlow</span>
+                        </div>
+                        <div class="skill-card" data-aos="zoom-in" data-aos-delay="200">
+                            <i class="fas fa-brain skill-icon"></i><span class="skill-name">Transformers</span>
+                        </div>
+                        <div class="skill-card" data-aos="zoom-in" data-aos-delay="250">
+                            <i class="fas fa-atom skill-icon"></i><span class="skill-name">PINNs</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="skill-group">
-                    <h3 class="skill-heading">LLMs & NLP</h3>
-                    <div class="skills-row">
-                        <div class="skill-tile"><i class="fas fa-robot"></i><span>LangCommunity</span></div>
-                        <div class="skill-tile"><i class="fas fa-robot"></i><span>RAG</span></div>
-                        <div class="skill-tile"><i class="fab fa-leanpub"></i><span>Hugging Face Transformers</span></div>
-                        <div class="skill-tile"><i class="fas fa-lightbulb"></i><span>GPT / Llama 3</span></div>
-                        <div class="skill-tile"><i class="fas fa-bolt"></i><span>Prompt Engineering</span></div>
-                        <div class="skill-tile"><i class="fas fa-search"></i><span>FAISS / Pinecone</span></div>
+                <div class="skill-category">
+                    <h3 data-aos="fade-up">LLMs & NLP</h3>
+                    <div class="skill-grid">
+                        <div class="skill-card" data-aos="zoom-in" data-aos-delay="100">
+                            <i class="fas fa-robot skill-icon"></i><span class="skill-name">LangChain</span>
+                        </div>
+                        <div class="skill-card" data-aos="zoom-in" data-aos-delay="150">
+                            <i class="fas fa-database skill-icon"></i><span class="skill-name">RAG</span>
+                        </div>
+                        <div class="skill-card" data-aos="zoom-in" data-aos-delay="200">
+                            <i class="fas fa-comment-dots skill-icon"></i><span class="skill-name">Llama 3</span>
+                        </div>
+                        <div class="skill-card" data-aos="zoom-in" data-aos-delay="250">
+                            <i class="fas fa-search skill-icon"></i><span class="skill-name">FAISS</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="skill-group">
-                    <h3 class="skill-heading">Computer Vision</h3>
-                    <div class="skills-row">
-                        <div class="skill-tile"><i class="fas fa-camera"></i><span>OpenCV</span></div>
-                        <div class="skill-tile"><i class="fas fa-bullseye"></i><span>YOLOv5 / v8</span></div>
-                        <div class="skill-tile"><i class="fas fa-eye"></i><span>Object Detection</span></div>
-                        <div class="skill-tile"><i class="fas fa-image"></i><span>Image Classification</span></div>
-                        <div class="skill-tile"><i class="fas fa-photo-video"></i><span>Diffusion Models</span></div>
+                <div class="skill-category">
+                    <h3 data-aos="fade-up">Computer Vision</h3>
+                    <div class="skill-grid">
+                        <div class="skill-card" data-aos="zoom-in" data-aos-delay="100">
+                            <i class="fas fa-eye skill-icon"></i><span class="skill-name">OpenCV</span>
+                        </div>
+                        <div class="skill-card" data-aos="zoom-in" data-aos-delay="150">
+                            <i class="fas fa-video skill-icon"></i><span class="skill-name">YOLOv8</span>
+                        </div>
+                        <div class="skill-card" data-aos="zoom-in" data-aos-delay="200">
+                            <i class="fas fa-image skill-icon"></i><span class="skill-name">Diffusion</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="skill-group">
-                    <h3 class="skill-heading">Data Science & Visualization</h3>
-                    <div class="skills-row">
-                        <div class="skill-tile"><i class="fas fa-table"></i><span>Pandas</span></div>
-                        <div class="skill-tile"><i class="fas fa-cubes"></i><span>NumPy</span></div>
-                        <div class="skill-tile"><i class="fas fa-chart-bar"></i><span>Feature Engineering</span></div>
-                        <div class="skill-tile"><i class="fas fa-wave-square"></i><span>Time-Series Analysis</span></div>
-                        <div class="skill-tile"><i class="fas fa-signal"></i><span>Signal Processing</span></div>
-                        <div class="skill-tile"><i class="fas fa-chart-pie"></i><span>Data Visualization</span></div>
+                <div class="skill-category">
+                    <h3 data-aos="fade-up">DevOps & Stack</h3>
+                    <div class="skill-grid">
+                        <div class="skill-card" data-aos="zoom-in" data-aos-delay="100">
+                            <i class="fab fa-docker skill-icon"></i><span class="skill-name">Docker</span>
+                        </div>
+                        <div class="skill-card" data-aos="zoom-in" data-aos-delay="150">
+                            <i class="fas fa-infinity skill-icon"></i><span class="skill-name">Showcase</span>
+                        </div>
+                        <div class="skill-card" data-aos="zoom-in" data-aos-delay="200">
+                            <i class="fas fa-bolt skill-icon"></i><span class="skill-name">FastAPI</span>
+                        </div>
+                        <div class="skill-card" data-aos="zoom-in" data-aos-delay="250">
+                            <i class="fas fa-database skill-icon"></i><span class="skill-name">SQL</span>
+                        </div>
+                        <div class="skill-card" data-aos="zoom-in" data-aos-delay="300">
+                            <i class="fas fa-code skill-icon"></i><span class="skill-name">C++</span>
+                        </div>
+                        <div class="skill-card" data-aos="zoom-in" data-aos-delay="350">
+                            <i class="fas fa-project-diagram skill-icon"></i><span class="skill-name">n8n</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="skill-group">
-                    <h3 class="skill-heading">MLOps & Deployment</h3>
-                    <div class="skills-row">
-                        <div class="skill-tile"><i class="fab fa-docker"></i><span>Docker</span></div>
-                        <div class="skill-tile"><i class="fas fa-archive"></i><span>MLflow</span></div>
-                        <div class="skill-tile"><i class="fas fa-database"></i><span>DVC</span></div>
-                        <div class="skill-tile"><i class="fas fa-tools"></i><span>CI/CD</span></div>
-                        <div class="skill-tile"><i class="fas fa-server"></i><span>FastAPI</span></div>
-                        <div class="skill-tile"><i class="fas fa-cloud"></i><span>Model Serving</span></div>
-                    </div>
-                </div>
-
-                <div class="skill-group">
-                    <h3 class="skill-heading">Automation</h3>
-                    <div class="skills-row">
-                        <div class="skill-tile"><i class="fas fa-robot"></i><span>n8n</span></div>
-                        <div class="skill-tile"><i class="fas fa-robot"></i><span>Make</span></div>
-                        <div class="skill-tile"><i class="fas fa-layer-group"></i><span>Multi-Agentic Systems</span></div>
-                        <div class="skill-tile"><i class="fas fa-play-circle"></i><span>Workflow Automation</span></div>
-                    </div>
-                </div>
-
-                <div class="skill-group">
-                    <h3 class="skill-heading">Programming Languages</h3>
-                    <div class="skills-row">
-                        <div class="skill-tile"><i class="fab fa-python"></i><span>Python</span></div>
-                        <div class="skill-tile"><i class="fas fa-database"></i><span>SQL</span></div>
-                        <div class="skill-tile"><i class="fas fa-code"></i><span>C</span></div>
-                        <div class="skill-tile"><i class="fas fa-code"></i><span>C++</span></div>
-                        <div class="skill-tile"><i class="fab fa-js-square"></i><span>JavaScript</span></div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -241,106 +310,105 @@
     <!-- 5. PROJECTS -->
     <section id="projects">
         <div class="container">
-            <h2 class="section-title">04. Projects</h2>
+            <h2 class="section-title" data-aos="fade-right">Projects</h2>
             <div class="project-grid">
 
                 <!-- Project 1 -->
-                <div class="project-card glass-panel" data-id="1">
-                    <div class="folder-icon"><i class="fas fa-lungs"></i></div>
+                <div class="project-card" data-aos="fade-up">
                     <h3>Chest Cancer MLOps</h3>
-                    <p>End-to-End CI/CD pipeline with MLflow & DVC. Containerized TensorFlow/Keras model via Docker achieving 93% accuracy.</p>
-                    <div class="mini-tags"><span>MLflow</span><span>Docker</span><span>CI/CD</span></div>
+                    <p>End-to-End CI/CD pipeline with MLflow & DVC. Containerized TensorFlow/Keras model via Docker
+                        achieving 93% accuracy.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/AlyyanAhmed21/End-to-End-Chest-Cancer-Classification-using-MLflow-and-DVC"
+                            target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
                 </div>
 
                 <!-- Project 2 -->
-                <div class="project-card glass-panel" data-id="2">
-                    <div class="folder-icon"><i class="fas fa-robot"></i></div>
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
                     <h3>AI-Powered Portfolio</h3>
-                    <p>Self-referential portfolio using LLM-3 and RAG pipelines for dynamic question-answering. Features FAISS vector search.</p>
-                    <div class="mini-tags"><span>RAG</span><span>LLM-3</span><span>FAISS</span></div>
+                    <p>Self-referential portfolio using LLM-3 and RAG pipelines for dynamic question-answering. Features
+                        FAISS vector search.</p>
+                    <div class="project-links">
+                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
                 </div>
 
                 <!-- Project 3 -->
-                <div class="project-card glass-panel" data-id="3">
-                    <div class="folder-icon"><i class="fas fa-smile"></i></div>
+                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
                     <h3>Facial Emotion Recognition</h3>
-                    <p>Production-grade MLOps pipeline with ViT Transformers. Integrated DVC, MLflow, and GitHub Actions.</p>
-                    <div class="mini-tags"><span>ViT</span><span>Hugging Face</span><span>MLOps</span></div>
+                    <p>Production-grade MLOps pipeline with ViT Transformers. Integrated DVC, MLflow, and GitHub
+                        Actions.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/AlyyanAhmed21/Emotion-Recognition-MLOps" target="_blank"><i
+                                class="fab fa-github"></i></a>
+                    </div>
                 </div>
 
                 <!-- Project 4 -->
-                <div class="project-card glass-panel" data-id="4">
-                    <div class="folder-icon"><i class="fas fa-x-ray"></i></div>
+                <div class="project-card" data-aos="fade-up" data-aos-delay="300">
                     <h3>Pneumonia Detection (ViT)</h3>
-                    <p>Dual-model system with ResNet-50 and Vision Transformers. Deployed Gradio app with MongoDB integration.</p>
-                    <div class="mini-tags"><span>ResNet-50</span><span>MongoDB</span><span>Gradio</span></div>
+                    <p>Dual-model system with ResNet-50 and Vision Transformers. Deployed Gradio app with MongoDB
+                        integration.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/AlyyanAhmed21/Chest-X-ray-Pneumonia-Detection-with-ViT"
+                            target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
                 </div>
 
+                <div class="project-card" data-aos="fade-up">
+                    <h3>Smart Cleaning Bot</h3>
+                    <p>AI-powered autonomous cleaning robot with Raspberry Pi and Arduino, featuring trash detection and
+                        obstacle avoidance.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/AlyyanAhmed21/AI-Based-Smart-Cleaning-Bot" target="_blank"><i
+                                class="fab fa-github"></i></a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- 6. CONTACT -->
     <section id="contact">
-        <div class="container">
-            <div class="contact-box glass-panel center-align">
-                <h2>05. Establish Connection</h2>
-                <p>My inbox is always open. Whether you have a question or a potential opportunity.</p>
-                
+        <div class="contact-container" data-aos="zoom-in" data-aos-duration="1000">
+            <div class="contact-card">
+                <h2>Get In Touch</h2>
+                <p>My inbox is always open. Whether you have a question, a potential opportunity, or just want to say
+                    hi, feel free to reach out.</p>
+
                 <div class="contact-info">
-                    <a href="mailto:alyyanawan19@gmail.com" class="contact-link">
-                        <i class="fas fa-envelope"></i> alyyanawan19@gmail.com
-                    </a>
-                    <a href="https://linkedin.com/in/alyyan-ahmed-048268363/" target="_blank" class="contact-link">
-                        <i class="fab fa-linkedin"></i> LinkedIn Profile
-                    </a>
-                    <div class="phone-link">
-                        <i class="fas fa-phone"></i> +92 318 5522312
+                    <div class="contact-item">
+                        <i class="far fa-envelope"></i>
+                        <span>alyyanawan19@gmail.com</span>
                     </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>+92 318 5522312</span>
+                    </div>
+                </div>
+
+                <div class="contact-actions">
+                    <a href="https://linkedin.com/in/alyyan-ahmed-048268363/" target="_blank" class="linkedin-btn">
+                        Connect on LinkedIn
+                    </a>
                 </div>
             </div>
         </div>
-        
-        <footer>
-            <p>Designed & Engineered by Alyyan Ahmed © 2025</p>
-        </footer>
     </section>
 
-    <!-- UI: AI CHAT WIDGET -->
-    <div id="ai-chat" class="hidden">
-        <div class="chat-header">
-            <span><i class="fas fa-network-wired"></i> ALYYAN_TWIN</span>
-            <button id="close-chat" aria-label="Close chat"><i class="fas fa-times"></i></button>
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Alyyan Ahmed | Architecting Intelligence</p>
         </div>
-        <div class="chat-feed" id="feed">
-            <div class="msg ai">Hello — ask me about Alyyan's projects, skills, or experience.</div>
-        </div>
-        <div class="chat-input">
-            <input type="text" id="user-input" placeholder="Query knowledge base...">
-            <button id="send-btn"><i class="fas fa-arrow-right"></i></button>
-        </div>
-    </div>
+    </footer>
 
-    <!-- UI: PROJECT MODAL -->
-    <dialog id="modal" class="glass-modal">
-        <button id="close-modal"><i class="fas fa-times"></i></button>
-        <div class="modal-body">
-            <h2 id="m-title">Project Title</h2>
-            <div id="m-stack" class="m-stack"></div>
-            <p id="m-desc">Description goes here.</p>
-            <div class="modal-footer">
-                <a href="#" id="m-git" target="_blank" class="btn primary">View Repository</a>
-            </div>
-        </div>
-    </dialog>
-
-    <!-- Floating action icon (bottom-right) -->
-    <button id="floating-chat" class="floating-btn" aria-label="Open AI Twin"><i class="fas fa-microchip"></i></button>
-
-    <!-- Vanta Topology -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.24/vanta.topology.min.js"></script>
-
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     <script src="main.js"></script>
+
 </body>
+
 </html>
