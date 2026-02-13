@@ -9,7 +9,8 @@
           "index.html",
           "style.css",
           "main.js",
-          "assets/**"
+          "assets/**",
+          "imgs/**"
         ]
       }
     }
