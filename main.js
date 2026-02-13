@@ -184,7 +184,6 @@ function initSkillWheel() {
 
     orbs.forEach(orb => {
         const group = orb.getAttribute('data-skill-group');
-        orb.addEventListener('mouseenter', () => openWheel(group));
         orb.addEventListener('click', () => openWheel(group));
     });
 
