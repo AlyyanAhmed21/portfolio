@@ -1,4 +1,4 @@
-{
+<escape>{
   "version": 2,
   "builds": [
     {
@@ -9,6 +9,9 @@
           "index.html",
           "style.css",
           "main.js",
+          "restaurant-ai.html",
+          "restaurant-ai.css",
+          "restaurant-ai.js",
           "assets/**",
           "imgs/**"
         ]
@@ -21,4 +24,4 @@
       "dest": "server.js"
     }
   ]
-}
+}</escape>
