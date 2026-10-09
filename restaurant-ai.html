@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Restaurant AI — a multi-channel AI ordering and restaurant operations system by Alyyan Ahmed.">
+    <title>Restaurant AI | Alyyan Ahmed</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="restaurant-ai.css">
+</head>
+<body>
+    <div class="noise"></div>
+    <div class="cursor-glow" aria-hidden="true"></div>
+
+    <nav class="project-nav">
+        <a href="index.html" class="back-link"><span>←</span> PORTFOLIO</a>
+        <div class="nav-project">RESTAURANT AI <span>/</span> SYSTEM 01</div>
+        <a href="#demo" class="nav-demo">WATCH DEMO <span>↓</span></a>
+    </nav>
+
+    <main>
+        <section class="project-hero section-shell">
+            <div class="hero-grid-bg" aria-hidden="true"></div>
+            <div class="hero-orbit orbit-one" aria-hidden="true"></div>
+            <div class="hero-orbit orbit-two" aria-hidden="true"></div>
+
+            <div class="hero-copy reveal">
+                <div class="eyebrow"><span class="pulse"></span> AI ORDERING SYSTEM / LIVE PROTOTYPE</div>
+                <h1>Restaurant AI<span class="accent-dot">.</span></h1>
+                <p class="hero-lead">A multi-channel AI ordering system that connects customers, restaurant operations, and automation into one live workflow.</p>
+                <div class="hero-actions">
+                    <a href="#demo" class="magnetic-btn primary">EXPLORE SYSTEM <span>↘</span></a>
+                    <a href="#architecture" class="magnetic-btn secondary">VIEW ARCHITECTURE</a>
+                </div>
+            </div>
+
+            <div class="hero-system reveal reveal-delay" aria-label="System overview visualization">
+                <div class="system-frame tilt-card">
+                    <div class="frame-top"><span>SYSTEM OVERVIEW</span><span>01 / 05</span></div>
+                    <div class="system-map">
+                        <div class="system-node customer-node"><b>01</b><span>CUSTOMER</span><small>PHONE / WHATSAPP</small></div>
+                        <div class="system-line line-a"></div>
+                        <div class="system-node agent-node"><b>02</b><span>AI AGENTS</span><small>VOICE / TEXT</small></div>
+                        <div class="system-line line-b"></div>
+                        <div class="system-node tool-node"><b>03</b><span>MCP / n8n</span><small>SHARED TOOLS</small></div>
+                        <div class="system-line line-c"></div>
+                        <div class="system-node data-node"><b>04</b><span>DATA LAYER</span><small>GOOGLE SHEETS</small></div>
+                        <div class="system-line line-d"></div>
+                        <div class="system-node dash-node"><b>05</b><span>DASHBOARD</span><small>OWNER CONTROL</small></div>
+                    </div>
+                    <div class="frame-status"><span><i></i> PIPELINE ONLINE</span><span>LOW-LATENCY TOOL ROUTING</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="demo" class="demo-section section-shell">
+            <div class="section-heading reveal">
+                <div class="section-index">00 / WALKTHROUGH</div>
+                <h2>See the system<br><em>in motion.</em></h2>
+                <p>The full walkthrough brings the customer experience, restaurant dashboard, and automation layer together.</p>
+            </div>
+            <div class="video-frame large-media reveal tilt-card">
+                <iframe src="https://www.youtube-nocookie.com/embed/iOgSFqNXdFc?rel=0" title="Restaurant AI — Full Project Walkthrough" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <div class="media-corner">FULL WALKTHROUGH / YOUTUBE</div>
+            </div>
+        </section>
+
+        <section class="feature-section section-shell" id="voice">
+            <div class="feature-copy reveal">
+                <div class="section-index">01 / VOICE ORDERING</div>
+                <h2>Talk to the<br><em>restaurant.</em></h2>
+                <p>Customers can speak naturally with the AI ordering agent, ask questions about the menu, build an order, and confirm it without leaving the call.</p>
+                <div class="tech-pills"><span>LIVEKIT</span><span>AI AGENT</span><span>MCP TOOLS</span><span>EN / UR</span></div>
+            </div>
+            <div class="feature-media reveal reveal-delay">
+                <div class="video-frame feature-video tilt-card">
+                    <iframe src="https://www.youtube-nocookie.com/embed/S848kwiizgg?rel=0" title="Restaurant AI — Voice Ordering Demo" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <div class="media-corner">VOICE ORDERING / YOUTUBE</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="feature-section reverse" id="whatsapp">
+            <div class="feature-copy reveal">
+                <div class="section-index">02 / WHATSAPP ORDERING</div>
+                <h2>The same logic.<br><em>Another channel.</em></h2>
+                <p>WhatsApp uses the same ordering capabilities through a text-based agent, keeping the customer journey consistent while the channel changes.</p>
+                <div class="flow-mini"><span>MESSAGE</span><b>→</b><span>AGENT</span><b>→</b><span>TOOLS</span><b>→</b><span>ORDER</span></div>
+            </div>
+            <div class="feature-media reveal">
+                <div class="video-frame feature-video tilt-card">
+                    <iframe src="https://www.youtube-nocookie.com/embed/x1JHmuqVExo?rel=0" title="Restaurant AI — WhatsApp Ordering Demo" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <div class="media-corner">WHATSAPP ORDERING / YOUTUBE</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="dashboard-section section-shell" id="dashboard">
+            <div class="section-heading centered reveal">
+                <div class="section-index">03 / RESTAURANT DASHBOARD</div>
+                <h2>Control the system<br><em>from one surface.</em></h2>
+                <p>The owner dashboard turns the AI layer into an operational tool — not just a chatbot.</p>
+            </div>
+
+            <div class="dashboard-stage reveal">
+                <div class="dashboard-viewport tilt-card">
+                    <img id="dashboard-image" src="assets/restaurant-ai/dashboard/1.png" alt="Restaurant dashboard overview" loading="lazy">
+                    <div class="dash-placeholder-label">DASHBOARD SCREENSHOT / <span id="dashboard-image-number">01</span></div>
+                </div>
+                <div class="dash-caption"><span>01</span><div><b>OPERATIONAL OVERVIEW</b><small>Orders, revenue, popular items and activity in one view.</small></div></div>
+            </div>
+
+            <div class="gallery-dots" aria-label="Dashboard screenshot gallery">
+                <button class="active" aria-label="Dashboard screenshot 1" aria-pressed="true"></button><button aria-label="Dashboard screenshot 2" aria-pressed="false"></button><button aria-label="Dashboard screenshot 3" aria-pressed="false"></button><button aria-label="Dashboard screenshot 4" aria-pressed="false"></button><button aria-label="Dashboard screenshot 5" aria-pressed="false"></button><button aria-label="Dashboard screenshot 6" aria-pressed="false"></button>
+            </div>
+        </section>
+
+        <section id="architecture" class="architecture-section">
+            <div class="architecture-backdrop" aria-hidden="true"></div>
+            <div class="section-shell">
+                <div class="section-heading reveal">
+                    <div class="section-index">04 / AUTOMATION & ARCHITECTURE</div>
+                    <h2>One system.<br><em>Shared intelligence.</em></h2>
+                    <p>The agents do not own the restaurant logic. Shared tools and deterministic workflows handle the operational layer.</p>
+                </div>
+
+                <div class="architecture-visual reveal">
+                    <div class="arch-track"></div>
+                    <div class="arch-node arch-customer"><span>CHANNELS</span><b>PHONE + WHATSAPP</b></div>
+                    <div class="arch-node arch-agent"><span>AI AGENTS</span><b>SARA + WHATSAPP AGENT</b></div>
+                    <div class="arch-node arch-mcp"><span>TOOL LAYER</span><b>MCP / n8n</b></div>
+                    <div class="arch-node arch-data"><span>DATA</span><b>GOOGLE SHEETS</b></div>
+                    <div class="arch-node arch-owner"><span>OWNER UI</span><b>DASHBOARD</b></div>
+                    <div class="packet p1"></div><div class="packet p2"></div><div class="packet p3"></div>
+                </div>
+
+                <div class="workflow-grid">
+                    <article class="workflow-card reveal"><span>WORKFLOW 01</span><h3>WhatsApp Agent</h3><p>Webhook → conversation context → AI agent → shared ordering tools → response.</p></article>
+                    <article class="workflow-card reveal reveal-delay"><span>WORKFLOW 02</span><h3>MCP Tool Layer</h3><p>Shared business operations exposed as reusable tools across AI channels.</p></article>
+                    <article class="workflow-card reveal"><span>WORKFLOW 03</span><h3>Calculate Total</h3><p>Live menu validation and deterministic price calculation outside the LLM.</p></article>
+                    <article class="workflow-card reveal reveal-delay"><span>WORKFLOW 04</span><h3>Place Order</h3><p>Validation, duplicate protection, IDs and confirmed order creation.</p></article>
+                    <article class="workflow-card reveal"><span>WORKFLOW 05</span><h3>Dashboard Sync</h3><p>Owner actions update the operational data consumed by the ordering agents.</p></article>
+                </div>
+
+                <div class="workflow-gallery reveal" aria-label="Workflow screenshot gallery">
+                    <div class="workflow-gallery-heading"><div><span>WORKFLOW SCREENSHOT GALLERY</span><h3>Inside the automation layer.</h3></div><p>Selected n8n workflows behind ordering, kitchen operations, and dashboard updates.</p></div>
+                    <div class="workflow-image-grid">
+                        <figure><img src="assets/restaurant-ai/workflows/whatsapp.png" alt="WhatsApp agent workflow" loading="lazy"><figcaption><b>WhatsApp Agent</b><span>Message handling and agent response</span></figcaption></figure>
+                        <figure><img src="assets/restaurant-ai/workflows/mcp.png" alt="Shared AI tool layer workflow" loading="lazy"><figcaption><b>Shared AI Tool Layer</b><span>Reusable tools for both AI channels</span></figcaption></figure>
+                        <figure><img src="assets/restaurant-ai/workflows/calculateTotal.png" alt="Deterministic order calculation workflow" loading="lazy"><figcaption><b>Deterministic Order Calculation</b><span>Menu validation and trusted pricing</span></figcaption></figure>
+                        <figure><img src="assets/restaurant-ai/workflows/placeOrder.png" alt="Place order workflow" loading="lazy"><figcaption><b>Place Order</b><span>Validation and confirmed order creation</span></figcaption></figure>
+                        <figure><img src="assets/restaurant-ai/workflows/dashboardAction.png" alt="Dashboard actions workflow" loading="lazy"><figcaption><b>Dashboard Sync</b><span>Menu updates from the owner dashboard</span></figcaption></figure>
+                        <figure><img src="assets/restaurant-ai/workflows/89d.png" alt="Mark item unavailable workflow" loading="lazy"><figcaption><b>Mark Item Unavailable</b><span>Update item availability</span></figcaption></figure>
+                        <figure><img src="assets/restaurant-ai/workflows/kitchenQueue.png" alt="Kitchen queue workflow" loading="lazy"><figcaption><b>Kitchen Queue</b><span>Order queue operations</span></figcaption></figure>
+                        <figure><img src="assets/restaurant-ai/workflows/orderstatus.png" alt="Order status workflow" loading="lazy"><figcaption><b>Order Status</b><span>Current order and kitchen status</span></figcaption></figure>
+                        <figure><img src="assets/restaurant-ai/workflows/payment.png" alt="Payment link workflow" loading="lazy"><figcaption><b>Payment Link</b><span>Payment and receipt handling</span></figcaption></figure>
+                        <figure><img src="assets/restaurant-ai/workflows/updatedMenuItem.png" alt="Updated menu item workflow" loading="lazy"><figcaption><b>Menu Item Updates</b><span>Maintain current menu data</span></figcaption></figure>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="technical-section section-shell">
+            <div class="section-heading reveal">
+                <div class="section-index">05 / TECHNICAL LAYER</div>
+                <h2>Built as an<br><em>operational system.</em></h2>
+            </div>
+            <div class="tech-layout">
+                <div class="tech-stack reveal">
+                    <span>LIVEKIT</span><span>n8n</span><span>MCP</span><span>GOOGLE SHEETS</span><span>AI AGENTS</span><span>STREAMLIT</span><span>WEBHOOKS</span><span>DETERMINISTIC LOGIC</span>
+                </div>
+                <div class="tech-copy reveal reveal-delay">
+                    <p>The architecture separates conversational reasoning from business-critical operations. Agents decide <em>when</em> a tool is needed; workflows handle <em>what</em> actually happens.</p>
+                    <div class="spec-row"><span>CHANNELS</span><b>02</b></div>
+                    <div class="spec-row"><span>CORE TOOLS</span><b>08+</b></div>
+                    <div class="spec-row"><span>WORKFLOWS</span><b>14</b></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="closing-section section-shell">
+            <div class="closing-grid reveal">
+                <div><span class="section-index">SYSTEM 01 / COMPLETE</span><h2>From conversation<br>to <em>operation.</em></h2></div>
+                <div class="closing-copy"><p>A working prototype connecting customer-facing AI with the operational systems a restaurant actually needs.</p><a href="index.html#projects" class="magnetic-btn primary">BACK TO PROJECTS <span>↗</span></a></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="project-footer"><span>ALYYAN AHMED</span><span>RESTAURANT AI / 2026</span><a href="index.html">PORTFOLIO ↗</a></footer>
+    <script src="restaurant-ai.js"></script>
+</body>
+</html>
