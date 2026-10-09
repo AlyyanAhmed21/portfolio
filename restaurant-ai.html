@@ -60,7 +60,7 @@
                 <p>The full walkthrough brings the customer experience, restaurant dashboard, and automation layer together.</p>
             </div>
             <div class="video-frame large-media reveal tilt-card">
-                <iframe src="https://www.youtube-nocookie.com/embed/iOgSFqNXdFc?rel=0" title="Restaurant AI — Full Project Walkthrough" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                <iframe src="https://www.youtube-nocookie.com/embed/iOgSFqNXdFc?enablejsapi=1&autoplay=0&mute=1&cc_load_policy=0&rel=0" title="Restaurant AI — Full Project Walkthrough" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                 <div class="media-corner">FULL WALKTHROUGH / YOUTUBE</div>
             </div>
         </section>
@@ -74,7 +74,7 @@
             </div>
             <div class="feature-media reveal reveal-delay">
                 <div class="video-frame feature-video tilt-card">
-                    <iframe src="https://www.youtube-nocookie.com/embed/S848kwiizgg?rel=0" title="Restaurant AI — Voice Ordering Demo" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube-nocookie.com/embed/S848kwiizgg?enablejsapi=1&autoplay=0&mute=1&cc_load_policy=0&rel=0" title="Restaurant AI — Voice Ordering Demo" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     <div class="media-corner">VOICE ORDERING / YOUTUBE</div>
                 </div>
             </div>
@@ -89,7 +89,7 @@
             </div>
             <div class="feature-media reveal">
                 <div class="video-frame feature-video tilt-card">
-                    <iframe src="https://www.youtube-nocookie.com/embed/x1JHmuqVExo?rel=0" title="Restaurant AI — WhatsApp Ordering Demo" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube-nocookie.com/embed/x1JHmuqVExo?enablejsapi=1&autoplay=0&mute=1&cc_load_policy=0&rel=0" title="Restaurant AI — WhatsApp Ordering Demo" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     <div class="media-corner">WHATSAPP ORDERING / YOUTUBE</div>
                 </div>
             </div>
@@ -97,21 +97,27 @@
 
         <section class="dashboard-section section-shell" id="dashboard">
             <div class="section-heading centered reveal">
-                <div class="section-index">03 / RESTAURANT DASHBOARD</div>
+                <div class="section-index dashboard-section-index"><span>03</span><i></i> RESTAURANT DASHBOARD</div>
                 <h2>Control the system<br><em>from one surface.</em></h2>
                 <p>The owner dashboard turns the AI layer into an operational tool — not just a chatbot.</p>
             </div>
 
             <div class="dashboard-stage reveal">
-                <div class="dashboard-viewport tilt-card">
-                    <img id="dashboard-image" src="assets/restaurant-ai/dashboard/1.png" alt="Restaurant dashboard overview" loading="lazy">
-                    <div class="dash-placeholder-label">DASHBOARD SCREENSHOT / <span id="dashboard-image-number">01</span></div>
+                <div class="dash-caption" aria-live="polite">
+                    <span>01</span><div><b>OPERATIONAL OVERVIEW</b><small>Orders, revenue, popular items and activity in one view.</small></div>
                 </div>
-                <div class="dash-caption"><span>01</span><div><b>OPERATIONAL OVERVIEW</b><small>Orders, revenue, popular items and activity in one view.</small></div></div>
-            </div>
-
-            <div class="gallery-dots" aria-label="Dashboard screenshot gallery">
-                <button class="active" aria-label="Dashboard screenshot 1" aria-pressed="true"></button><button aria-label="Dashboard screenshot 2" aria-pressed="false"></button><button aria-label="Dashboard screenshot 3" aria-pressed="false"></button><button aria-label="Dashboard screenshot 4" aria-pressed="false"></button><button aria-label="Dashboard screenshot 5" aria-pressed="false"></button><button aria-label="Dashboard screenshot 6" aria-pressed="false"></button>
+                <div class="gallery-media-row">
+                    <button class="gallery-arrow dashboard-prev" type="button" aria-label="Previous dashboard screenshot">←</button>
+                    <div class="dashboard-viewport tilt-card">
+                        <img id="dashboard-image" src="assets/restaurant-ai/dashboard/1.png" alt="Restaurant dashboard overview" loading="lazy" draggable="false">
+                        <div class="dash-placeholder-label">DASHBOARD SCREENSHOT / <span id="dashboard-image-number">01</span></div>
+                    </div>
+                    <button class="gallery-arrow dashboard-next" type="button" aria-label="Next dashboard screenshot">→</button>
+                </div>
+                <div class="gallery-dots dashboard-gallery-dots" aria-label="Dashboard screenshot gallery">
+                    <button type="button" class="active" aria-label="Dashboard screenshot 1" aria-pressed="true"></button><button type="button" class="" aria-label="Dashboard screenshot 2" aria-pressed="false"></button><button type="button" class="" aria-label="Dashboard screenshot 3" aria-pressed="false"></button><button type="button" class="" aria-label="Dashboard screenshot 4" aria-pressed="false"></button><button type="button" class="" aria-label="Dashboard screenshot 5" aria-pressed="false"></button><button type="button" class="" aria-label="Dashboard screenshot 6" aria-pressed="false"></button>
+                </div>
+                <p class="gallery-note">USE ARROWS OR SWIPE TO EXPLORE</p>
             </div>
         </section>
 
@@ -134,28 +140,27 @@
                     <div class="packet p1"></div><div class="packet p2"></div><div class="packet p3"></div>
                 </div>
 
-                <div class="workflow-grid">
-                    <article class="workflow-card reveal"><span>WORKFLOW 01</span><h3>WhatsApp Agent</h3><p>Webhook → conversation context → AI agent → shared ordering tools → response.</p></article>
-                    <article class="workflow-card reveal reveal-delay"><span>WORKFLOW 02</span><h3>MCP Tool Layer</h3><p>Shared business operations exposed as reusable tools across AI channels.</p></article>
-                    <article class="workflow-card reveal"><span>WORKFLOW 03</span><h3>Calculate Total</h3><p>Live menu validation and deterministic price calculation outside the LLM.</p></article>
-                    <article class="workflow-card reveal reveal-delay"><span>WORKFLOW 04</span><h3>Place Order</h3><p>Validation, duplicate protection, IDs and confirmed order creation.</p></article>
-                    <article class="workflow-card reveal"><span>WORKFLOW 05</span><h3>Dashboard Sync</h3><p>Owner actions update the operational data consumed by the ordering agents.</p></article>
-                </div>
-
                 <div class="workflow-gallery reveal" aria-label="Workflow screenshot gallery">
-                    <div class="workflow-gallery-heading"><div><span>WORKFLOW SCREENSHOT GALLERY</span><h3>Inside the automation layer.</h3></div><p>Selected n8n workflows behind ordering, kitchen operations, and dashboard updates.</p></div>
-                    <div class="workflow-image-grid">
-                        <figure><img src="assets/restaurant-ai/workflows/whatsapp.png" alt="WhatsApp agent workflow" loading="lazy"><figcaption><b>WhatsApp Agent</b><span>Message handling and agent response</span></figcaption></figure>
-                        <figure><img src="assets/restaurant-ai/workflows/mcp.png" alt="Shared AI tool layer workflow" loading="lazy"><figcaption><b>Shared AI Tool Layer</b><span>Reusable tools for both AI channels</span></figcaption></figure>
-                        <figure><img src="assets/restaurant-ai/workflows/calculateTotal.png" alt="Deterministic order calculation workflow" loading="lazy"><figcaption><b>Deterministic Order Calculation</b><span>Menu validation and trusted pricing</span></figcaption></figure>
-                        <figure><img src="assets/restaurant-ai/workflows/placeOrder.png" alt="Place order workflow" loading="lazy"><figcaption><b>Place Order</b><span>Validation and confirmed order creation</span></figcaption></figure>
-                        <figure><img src="assets/restaurant-ai/workflows/dashboardAction.png" alt="Dashboard actions workflow" loading="lazy"><figcaption><b>Dashboard Sync</b><span>Menu updates from the owner dashboard</span></figcaption></figure>
-                        <figure><img src="assets/restaurant-ai/workflows/89d.png" alt="Mark item unavailable workflow" loading="lazy"><figcaption><b>Mark Item Unavailable</b><span>Update item availability</span></figcaption></figure>
-                        <figure><img src="assets/restaurant-ai/workflows/kitchenQueue.png" alt="Kitchen queue workflow" loading="lazy"><figcaption><b>Kitchen Queue</b><span>Order queue operations</span></figcaption></figure>
-                        <figure><img src="assets/restaurant-ai/workflows/orderstatus.png" alt="Order status workflow" loading="lazy"><figcaption><b>Order Status</b><span>Current order and kitchen status</span></figcaption></figure>
-                        <figure><img src="assets/restaurant-ai/workflows/payment.png" alt="Payment link workflow" loading="lazy"><figcaption><b>Payment Link</b><span>Payment and receipt handling</span></figcaption></figure>
-                        <figure><img src="assets/restaurant-ai/workflows/updatedMenuItem.png" alt="Updated menu item workflow" loading="lazy"><figcaption><b>Menu Item Updates</b><span>Maintain current menu data</span></figcaption></figure>
+                    <div class="workflow-gallery-heading">
+                        <div><span>WORKFLOW SCREENSHOT GALLERY</span><h3>Inside the automation layer.</h3></div>
+                        <p>Explore the workflows that connect both customer channels to reliable restaurant operations.</p>
                     </div>
+                    <div class="workflow-slide-caption" aria-live="polite">
+                        <span id="workflow-slide-number">01 / 10</span>
+                        <div><h4 id="workflow-slide-title">WhatsApp Agent Workflow</h4><p id="workflow-slide-description">Message handling and agent response across the WhatsApp ordering journey.</p></div>
+                    </div>
+                    <div class="gallery-media-row workflow-media-row">
+                        <button class="gallery-arrow workflow-prev" type="button" aria-label="Previous workflow screenshot">←</button>
+                        <div class="workflow-viewport">
+                            <img id="workflow-image" src="assets/restaurant-ai/workflows/whatsapp.png" alt="WhatsApp agent workflow screenshot" loading="lazy" draggable="false">
+                            <span class="workflow-image-label">AUTOMATION / <span id="workflow-image-number">01</span></span>
+                        </div>
+                        <button class="gallery-arrow workflow-next" type="button" aria-label="Next workflow screenshot">→</button>
+                    </div>
+                    <div class="gallery-dots workflow-gallery-dots" aria-label="Workflow screenshot gallery">
+                        <button type="button" class="active" aria-label="Workflow screenshot 1" aria-pressed="true"></button><button type="button" class="" aria-label="Workflow screenshot 2" aria-pressed="false"></button><button type="button" class="" aria-label="Workflow screenshot 3" aria-pressed="false"></button><button type="button" class="" aria-label="Workflow screenshot 4" aria-pressed="false"></button><button type="button" class="" aria-label="Workflow screenshot 5" aria-pressed="false"></button><button type="button" class="" aria-label="Workflow screenshot 6" aria-pressed="false"></button><button type="button" class="" aria-label="Workflow screenshot 7" aria-pressed="false"></button><button type="button" class="" aria-label="Workflow screenshot 8" aria-pressed="false"></button><button type="button" class="" aria-label="Workflow screenshot 9" aria-pressed="false"></button><button type="button" class="" aria-label="Workflow screenshot 10" aria-pressed="false"></button>
+                    </div>
+                    <p class="gallery-note">USE ARROWS OR SWIPE TO EXPLORE</p>
                 </div>
             </div>
         </section>

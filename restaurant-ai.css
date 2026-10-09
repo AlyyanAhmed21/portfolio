@@ -48,3 +48,31 @@
 @media(max-width:600px){.hero-lead{font-size:1.05rem}.video-frame.feature-video{aspect-ratio:16/10}.video-frame.large-media{aspect-ratio:16/9}.workflow-gallery-heading p{font-size:.9rem}}
 .dashboard-viewport.no-image::after{content:'ADD DASHBOARD SCREENSHOTS TO assets/restaurant-ai/dashboard/';position:absolute;inset:0;display:grid;place-items:center;padding:24px;text-align:center;color:#b7c5d7;background:repeating-linear-gradient(135deg,rgba(0,242,254,.025) 0 1px,transparent 1px 14px),#080b13;font:500 .75rem var(--mono);letter-spacing:.08em}
 .workflow-image-grid img.image-missing{min-height:140px;color:#b7c5d7;font:500 .7rem var(--mono);padding:20px;}
+
+
+/* Stronger dashboard section marker */
+.dashboard-section-index{display:inline-flex;align-items:center;gap:11px;color:#d5e2f2;font-size:.82rem;letter-spacing:.15em}
+.dashboard-section-index span{display:inline-grid;place-items:center;width:34px;height:34px;color:#061016;background:var(--cyan);font:700 .76rem var(--mono);box-shadow:0 0 24px rgba(0,242,254,.22)}
+.dashboard-section-index i{width:34px;height:1px;background:linear-gradient(90deg,var(--cyan),rgba(0,242,254,.15))}
+.dash-caption{min-height:68px;margin:0 0 18px;align-items:flex-start}
+.gallery-media-row{display:grid;grid-template-columns:46px minmax(0,1fr) 46px;align-items:center;gap:14px}
+.gallery-arrow{width:44px;height:44px;display:grid;place-items:center;border:1px solid rgba(0,242,254,.28);background:rgba(0,242,254,.045);color:var(--cyan);font:400 1.35rem var(--sans);cursor:pointer;transition:background .2s,color .2s,transform .2s,border-color .2s}
+.gallery-arrow:hover{background:var(--cyan);color:#041016;border-color:var(--cyan);transform:translateY(-2px)}
+.dashboard-viewport{min-width:0;touch-action:pan-y;user-select:none}
+#dashboard-image{user-select:none;-webkit-user-drag:none}
+.dashboard-gallery-dots,.workflow-gallery-dots{margin:24px 0 0;flex-wrap:wrap}
+.dashboard-gallery-dots button,.workflow-gallery-dots button{width:34px;height:4px}
+.dashboard-stage .gallery-note,.workflow-gallery .gallery-note{display:block;margin-top:12px;color:#a6b3c6;font-size:.64rem;letter-spacing:.12em;text-align:center}
+.workflow-gallery{margin-top:35px;padding:clamp(18px,3vw,34px)}
+.workflow-gallery-heading{margin-bottom:25px}
+.workflow-gallery-heading span{font-size:.74rem}
+.workflow-gallery-heading p{color:#bdc7d6;line-height:1.75}
+.workflow-slide-caption{display:flex;align-items:flex-start;gap:18px;min-height:88px;margin-bottom:18px}
+.workflow-slide-caption>span{flex:0 0 auto;padding-top:4px;color:var(--cyan);font:500 .72rem var(--mono);letter-spacing:.08em}
+.workflow-slide-caption h4{color:#f0f4fb;font:600 1.12rem/1.35 var(--display);letter-spacing:-.02em}
+.workflow-slide-caption p{margin-top:6px;color:#bdc7d6;font-size:.92rem;line-height:1.65}
+.workflow-viewport{position:relative;min-width:0;overflow:hidden;aspect-ratio:16/9;border:1px solid rgba(255,255,255,.15);background:#080b13;touch-action:pan-y;user-select:none}
+.workflow-viewport img{display:block;width:100%;height:100%;object-fit:contain;background:#080b13;-webkit-user-drag:none;user-select:none}
+.workflow-image-label{position:absolute;top:12px;right:12px;padding:6px 8px;color:#d0d9e7;background:rgba(5,8,15,.82);font:500 .65rem var(--mono);letter-spacing:.1em}
+.workflow-viewport.no-image:after{content:'WORKFLOW SCREENSHOT NOT FOUND';position:absolute;inset:0;display:grid;place-items:center;padding:20px;color:#b7c5d7;background:#080b13;font:500 .72rem var(--mono);letter-spacing:.08em}
+@media(max-width:700px){.gallery-media-row{grid-template-columns:34px minmax(0,1fr) 34px;gap:7px}.gallery-arrow{width:34px;height:38px;font-size:1.1rem}.dashboard-viewport,.workflow-viewport{aspect-ratio:4/3}.workflow-slide-caption{gap:11px;min-height:100px}.workflow-slide-caption p{font-size:.85rem}.dashboard-section-index{font-size:.7rem;gap:8px}.dashboard-section-index span{width:30px;height:30px}}
