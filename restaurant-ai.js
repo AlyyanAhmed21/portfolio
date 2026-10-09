@@ -63,150 +63,190 @@ if (window.matchMedia('(pointer: fine)').matches) {
     });
 }
 
+// Dashboard gallery
+const galleryDots = [...document.querySelectorAll('.gallery-dots button')];
+const dashboardCaption = document.querySelector('.dash-caption');
+const dashboardImage = document.querySelector('#dashboard-image');
+const dashboardImageNumber = document.querySelector('#dashboard-image-number');
+const dashboardViewport = document.querySelector('.dashboard-viewport');
+const dashboardContent = [
+    ['01', 'ONGOING ORDERS', 'Homepage view of orders currently being processed.', 'assets/restaurant-ai/dashboard/1.png', 'Restaurant dashboard showing ongoing orders'],
+    ['02', 'COMPLETED ORDERS', 'The homepage tab showing orders completed over the last three days.', 'assets/restaurant-ai/dashboard/2.png', 'Restaurant dashboard showing recently completed orders'],
+    ['03', 'MENU CONTROL', 'View menu items and control their availability and details.', 'assets/restaurant-ai/dashboard/3.png', 'Restaurant dashboard menu control'],
+    ['04', 'ADD MENU ITEM', 'Add a new item to the restaurant menu.', 'assets/restaurant-ai/dashboard/4.png', 'Restaurant dashboard add menu item form'],
+    ['05', 'ANALYTICS & GRAPHS', 'Visualize restaurant performance through analytical graphs.', 'assets/restaurant-ai/dashboard/5.png', 'Restaurant dashboard analytics graphs'],
+    ['06', 'ORDER HISTORY', 'Review historical order records.', 'assets/restaurant-ai/dashboard/6.png', 'Restaurant dashboard order history']
+];
+let dashboardIndex = 0;
+function showDashboardSlide(index) {
+    dashboardIndex = (index + dashboardContent.length) % dashboardContent.length;
+    const [number, title, description, imagePath, altText] = dashboardContent[dashboardIndex];
+    galleryDots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === dashboardIndex);
+        dot.setAttribute('aria-pressed', String(i === dashboardIndex));
+    });
+    if (dashboardImage) {
+        dashboardImage.style.display = 'block'; dashboardImage.src = imagePath; dashboardImage.alt = altText;
+        dashboardViewport?.classList.remove('no-image');
+    }
+    if (dashboardImageNumber) dashboardImageNumber.textContent = number;
+    if (dashboardCaption) {
+        dashboardCaption.replaceChildren();
+        const n = document.createElement('span'); n.textContent = number;
+        const wrap = document.createElement('div');
+        const b = document.createElement('b'); b.textContent = title;
+        const small = document.createElement('small'); small.textContent = description;
+        wrap.append(b, small); dashboardCaption.append(n, wrap);
+    }
+}
+galleryDots.forEach((dot, i) => dot.addEventListener('click', () => showDashboardSlide(i)));
+document.querySelector('#dashboard-prev')?.addEventListener('click', () => showDashboardSlide(dashboardIndex - 1));
+document.querySelector('#dashboard-next')?.addEventListener('click', () => showDashboardSlide(dashboardIndex + 1));
+if (dashboardViewport) {
+    let startX = null;
+    dashboardViewport.addEventListener('touchstart', e => { startX = e.changedTouches[0].clientX; }, {passive:true});
+    dashboardViewport.addEventListener('touchend', e => {
+        if (startX === null) return;
+        const delta = e.changedTouches[0].clientX - startX;
+        if (Math.abs(delta) > 45) showDashboardSlide(dashboardIndex + (delta < 0 ? 1 : -1));
+        startX = null;
+    }, {passive:true});
+}
+if (dashboardImage) dashboardImage.addEventListener('error', () => {
+    dashboardViewport?.classList.add('no-image'); dashboardImage.style.display = 'none';
+});
 
-function bindGallery({ viewport, image, dots, prev, next, slides, render, missingClass }) {
-    if (!viewport || !image || !slides.length) return;
-    let index = 0, startX = null, startY = null, pointerId = null;
+// Contact form opens a prefilled email draft; no backend or storage is used.
+document.querySelector('#contact-form')?.addEventListener('submit', event => {
+    event.preventDefault();
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    const subject = String(data.get('subject') || 'Portfolio enquiry');
+    const body = `Name: ${data.get('name')}\nEmail: ${data.get('email')}\n\n${data.get('message')}`;
+    window.location.href = `mailto:YOUR_EMAIL@example.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+});
 
-    const show = (n) => {
-        index = (n + slides.length) % slides.length;
-        render(slides[index], index);
-        dots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === index);
-            dot.setAttribute('aria-pressed', String(i === index));
+// YouTube: muted autoplay while visible, pause outside the viewport.
+// Native controls are hidden in the embed URL; YouTube may still show branding/overlays.
+(function setupYouTubeVisibilityPlayback() {
+    const frames = [...document.querySelectorAll('.video-frame iframe')];
+    if (!frames.length) return;
+    let apiReady = false;
+    const players = new Map();
+    const visible = new Set();
+    function initPlayers() {
+        if (!window.YT?.Player) return;
+        apiReady = true;
+        frames.forEach(frame => {
+            if (players.has(frame)) return;
+            const player = new YT.Player(frame, {
+                events: {
+                    onReady: event => {
+                        event.target.mute();
+                        if (visible.has(frame)) event.target.playVideo();
+                    }
+                }
+            });
+            players.set(frame, player);
         });
-    };
-    prev?.addEventListener('click', () => show(index - 1));
-    next?.addEventListener('click', () => show(index + 1));
-    dots.forEach((dot, i) => dot.addEventListener('click', () => show(i)));
+    }
+    window.onYouTubeIframeAPIReady = initPlayers;
+    if (!document.querySelector('script[data-youtube-iframe-api]')) {
+        const script = document.createElement('script');
+        script.src = 'https://www.youtube.com/iframe_api';
+        script.async = true; script.dataset.youtubeIframeApi = 'true';
+        document.head.appendChild(script);
+    }
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+            const frame = frames.find(f => f.closest('.video-frame') === entry.target);
+            if (!frame) return;
+            const player = players.get(frame);
+            if (entry.isIntersecting && entry.intersectionRatio >= 0.55) {
+                visible.add(frame);
+                if (player?.mute) { player.mute(); player.playVideo(); }
+            } else {
+                visible.delete(frame);
+                if (player?.pauseVideo) player.pauseVideo();
+            }
+        }), {threshold:[0,0.55,0.75]});
+        frames.forEach(frame => observer.observe(frame.closest('.video-frame')));
+    }
+    if (window.YT?.Player) initPlayers();
+})();
 
-    viewport.addEventListener('pointerdown', (e) => {
-        if (e.pointerType === 'mouse' && e.button !== 0) return;
-        startX = e.clientX; startY = e.clientY; pointerId = e.pointerId;
+
+// Contact form: prepare a mailto draft; no backend or automatic sending.
+const contactForm = document.querySelector('#contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const formData = new FormData(contactForm);
+        const name = String(formData.get('name') || '').trim();
+        const senderEmail = String(formData.get('email') || '').trim();
+        const subject = String(formData.get('subject') || '').trim();
+        const message = String(formData.get('message') || '').trim();
+
+        const body = [
+            `Name: ${name}`,
+            `Email: ${senderEmail}`,
+            '',
+            message
+        ].join('\\n');
+
+        const mailto = `mailto:alyyanawan19@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = mailto;
     });
-    viewport.addEventListener('pointerup', (e) => {
-        if (pointerId !== e.pointerId || startX === null) return;
-        const dx = e.clientX - startX, dy = e.clientY - startY;
-        if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.25) show(index + (dx < 0 ? 1 : -1));
-        startX = startY = pointerId = null;
-    });
-    viewport.addEventListener('pointercancel', () => { startX = startY = pointerId = null; });
-    image.addEventListener('error', () => {
-        if (missingClass) viewport.classList.add(missingClass);
-        image.alt = `Screenshot file missing: ${image.getAttribute('src')}`;
-    });
-    image.addEventListener('load', () => { if (missingClass) viewport.classList.remove(missingClass); });
-    show(0);
 }
 
-const dashboardContent = [
-    ['01','OPERATIONAL OVERVIEW','Orders, revenue, popular items and activity in one view.','1.png','Restaurant dashboard operational overview'],
-    ['02','ANALYTICS & TRENDS','Review sales patterns, order activity and performance metrics.','2.png','Restaurant analytics and trends'],
-    ['03','OWNER REPORTS','A consolidated performance view for the selected reporting period.','3.png','Restaurant owner reporting dashboard'],
-    ['04','ORDER MANAGEMENT','Review customer orders, totals, items and order history in one place.','4.png','Restaurant order history'],
-    ['05','MENU CONTROL','Add items and control what the ordering agents can offer.','5.png','Restaurant menu management'],
-    ['06','LIVE AI SYNC','Dashboard changes update the operational menu data used by the ordering agents.','6.png','Restaurant dashboard live AI sync']
-].map(([number,title,description,file,alt]) => ({number,title,description,src:`assets/restaurant-ai/dashboard/${file}`,alt}));
+// Dashboard gallery arrows, dots and touch swipe.
+(() => {
+ const image=document.querySelector('#dashboard-image'), caption=document.querySelector('.dash-caption');
+ const counter=document.querySelector('#dashboard-image-number'), prev=document.querySelector('#dashboard-prev'), next=document.querySelector('#dashboard-next');
+ const dots=[...document.querySelectorAll('.gallery-dots:not(.workflow-dots) button')];
+ const slides=[["01", "ONGOING ORDERS", "Homepage view of orders currently being processed.", "assets/restaurant-ai/dashboard/1.png", "Restaurant dashboard ongoing orders"], ["02", "COMPLETED ORDERS", "Previously completed orders from the last three days, shown on the second homepage tab.", "assets/restaurant-ai/dashboard/2.png", "Restaurant dashboard completed orders"], ["03", "MENU MANAGEMENT", "View menu items and control their availability and details.", "assets/restaurant-ai/dashboard/3.png", "Restaurant dashboard menu management"], ["04", "ADD MENU ITEM", "Add a new item to the restaurant menu.", "assets/restaurant-ai/dashboard/4.png", "Restaurant dashboard add menu item"], ["05", "ANALYTICS", "Graphs and charts summarizing restaurant performance.", "assets/restaurant-ai/dashboard/5.png", "Restaurant dashboard analytics graphs"], ["06", "ORDER HISTORY", "Review historical orders and past activity.", "assets/restaurant-ai/dashboard/6.png", "Restaurant dashboard order history"]]; let index=0;
+ function show(i){ index=(i+slides.length)%slides.length; const [num,title,desc,path,alt]=slides[index];
+  if(image){image.src=path;image.alt=alt;image.style.display='block';}
+  if(counter)counter.textContent=num;
+  if(caption)caption.innerHTML=`<span>${num}</span><div><b>${title}</b><small>${desc}</small></div>`;
+  dots.forEach((d,j)=>{d.classList.toggle('active',j===index);d.setAttribute('aria-pressed',String(j===index));});
+ }
+ prev?.addEventListener('click',()=>show(index-1)); next?.addEventListener('click',()=>show(index+1));
+ dots.forEach((d,i)=>d.addEventListener('click',()=>show(i)));
+ const viewport=document.querySelector('.dashboard-viewport'); let x0=null;
+ viewport?.addEventListener('touchstart',e=>{x0=e.touches[0].clientX;},{passive:true});
+ viewport?.addEventListener('touchend',e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>45)show(index+(dx<0?1:-1));x0=null;},{passive:true});
+ show(0);
+})();
 
-const dashImage = document.querySelector('#dashboard-image');
-const dashCaption = document.querySelector('.dash-caption');
-const dashNumber = document.querySelector('#dashboard-image-number');
-bindGallery({
-    viewport: document.querySelector('.dashboard-viewport'), image: dashImage,
-    dots: [...document.querySelectorAll('.dashboard-gallery-dots button')],
-    prev: document.querySelector('.dashboard-prev'), next: document.querySelector('.dashboard-next'),
-    slides: dashboardContent, missingClass: 'no-image',
-    render: (s) => {
-        dashImage.src = s.src; dashImage.alt = s.alt; dashNumber.textContent = s.number;
-        dashCaption.replaceChildren();
-        const num = document.createElement('span'); num.textContent = s.number;
-        const wrap = document.createElement('div'), title = document.createElement('b'), desc = document.createElement('small');
-        title.textContent = s.title; desc.textContent = s.description; wrap.append(title, desc); dashCaption.append(num, wrap);
-    }
-});
+// Workflow screenshot carousel: arrows, dots and touch swipe.
+(() => {
+ const slides=[["WhatsApp Agent", "Message handling and agent response.", "assets/restaurant-ai/workflows/whatsapp.png", "WhatsApp agent workflow"], ["Shared AI Tool Layer", "Reusable tools for both AI channels.", "assets/restaurant-ai/workflows/mcp.png", "Shared AI tool layer workflow"], ["Deterministic Order Calculation", "Live menu validation and reliable price calculation.", "assets/restaurant-ai/workflows/calculateTotal.png", "Order total calculation workflow"], ["Place Order", "Validation and confirmed order creation.", "assets/restaurant-ai/workflows/placeOrder.png", "Place order workflow"], ["Dashboard Sync", "Owner actions update operational data used by the ordering agents.", "assets/restaurant-ai/workflows/dashboardAction.png", "Dashboard sync workflow"], ["Mark Item Unavailable", "Update menu item availability.", "assets/restaurant-ai/workflows/89d.png", "Mark item unavailable workflow"], ["Kitchen Queue", "Manage orders in the kitchen queue.", "assets/restaurant-ai/workflows/kitchenQueue.png", "Kitchen queue workflow"], ["Order Status Updates", "Keep order status current across the workflow.", "assets/restaurant-ai/workflows/orderstatus.png", "Order status workflow"], ["Payment Link", "Payment link handling.", "assets/restaurant-ai/workflows/payment.png", "Payment link workflow"], ["Menu Item Updates", "Keep menu data updated for the ordering system.", "assets/restaurant-ai/workflows/updatedMenuItem.png", "Menu item update workflow"]]; const image=document.querySelector('#workflow-image');
+ const number=document.querySelector('#workflow-slide-number'), title=document.querySelector('#workflow-slide-title'), desc=document.querySelector('#workflow-slide-description');
+ const prev=document.querySelector('#workflow-prev'), next=document.querySelector('#workflow-next'), dots=[...document.querySelectorAll('.workflow-dots button')];
+ let index=0;
+ function show(i){index=(i+slides.length)%slides.length;const [t,d,path,alt]=slides[index];
+  if(image){image.src=path;image.alt=alt;}
+  if(number)number.textContent=`${String(index+1).padStart(2,'0')} / ${String(slides.length).padStart(2,'0')}`;
+  if(title)title.textContent=t;if(desc)desc.textContent=d;
+  dots.forEach((dot,j)=>{dot.classList.toggle('active',j===index);dot.setAttribute('aria-pressed',String(j===index));});
+ }
+ prev?.addEventListener('click',()=>show(index-1));next?.addEventListener('click',()=>show(index+1));
+ dots.forEach((dot,i)=>dot.addEventListener('click',()=>show(i)));
+ const viewport=document.querySelector('.workflow-slide-viewport');let x0=null;
+ viewport?.addEventListener('touchstart',e=>{x0=e.touches[0].clientX;},{passive:true});
+ viewport?.addEventListener('touchend',e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>45)show(index+(dx<0?1:-1));x0=null;},{passive:true});
+ show(0);
+})();
 
-const workflowContent = [
-    ['WhatsApp Agent Workflow','Message handling and agent response across the WhatsApp ordering journey.','whatsapp.png','WhatsApp agent workflow screenshot'],
-    ['Shared AI Tool Layer','Reusable MCP tools allow both customer channels to call the same restaurant operations.','mcp.png','Shared AI tool layer workflow screenshot'],
-    ['Deterministic Order Calculation','Validate menu items and calculate trusted prices outside the language model.','calculateTotal.png','Deterministic order calculation workflow screenshot'],
-    ['Order Creation & Validation','Validate order details, prevent duplicates, assign identifiers and create a confirmed order.','placeOrder.png','Order creation and validation workflow screenshot'],
-    ['Dashboard-to-Data Sync','Owner dashboard actions update the operational data used by the ordering agents.','dashboardAction.png','Dashboard to data sync workflow screenshot'],
-    ['Mark Item Unavailable','Update an item’s availability so the ordering agent can stop offering it.','89d.png','Mark item unavailable workflow screenshot'],
-    ['Kitchen Queue','Route confirmed orders into the kitchen queue for operational tracking.','kitchenQueue.png','Kitchen queue workflow screenshot'],
-    ['Order Status Updates','Retrieve and communicate the current status of an order.','orderstatus.png','Order status workflow screenshot'],
-    ['Payment Link','Handle payment-link generation as part of the ordering flow.','payment.png','Payment link workflow screenshot'],
-    ['Menu Item Updates','Keep menu item data current for the dashboard and AI ordering channels.','updatedMenuItem.png','Menu item update workflow screenshot']
-].map(([title,description,file,alt]) => ({title,description,src:`assets/restaurant-ai/workflows/${file}`,alt}));
-
-const workImage = document.querySelector('#workflow-image');
-bindGallery({
-    viewport: document.querySelector('.workflow-viewport'), image: workImage,
-    dots: [...document.querySelectorAll('.workflow-gallery-dots button')],
-    prev: document.querySelector('.workflow-prev'), next: document.querySelector('.workflow-next'),
-    slides: workflowContent, missingClass: 'no-image',
-    render: (s, i) => {
-        workImage.src = s.src; workImage.alt = s.alt;
-        document.querySelector('#workflow-slide-number').textContent = `${String(i+1).padStart(2,'0')} / ${String(workflowContent.length).padStart(2,'0')}`;
-        document.querySelector('#workflow-slide-title').textContent = s.title;
-        document.querySelector('#workflow-slide-description').textContent = s.description;
-        document.querySelector('#workflow-image-number').textContent = String(i+1).padStart(2,'0');
-    }
-});
-
-// Play a muted YouTube video while it is prominently visible, pause it when it leaves.
-// A manual pause is respected until the video leaves and re-enters the viewport.
-(function visibleYouTubePlayback() {
-    const frames = [...document.querySelectorAll('.video-frame iframe')];
-    if (!frames.length || !('IntersectionObserver' in window)) return;
-    const state = new WeakMap();
-    frames.forEach(frame => {
-        const url = new URL(frame.src);
-        url.searchParams.set('enablejsapi','1');
-        url.searchParams.set('autoplay','0');
-        url.searchParams.set('mute','1');
-        url.searchParams.set('cc_load_policy','0');
-        if (location.origin && location.origin !== 'null') url.searchParams.set('origin',location.origin);
-        frame.src = url.toString();
-        state.set(frame,{visible:false,manualPause:false,player:null,visibilityPause:false});
-    });
-
-    const begin = frame => {
-        const s = state.get(frame);
-        if (!s || !s.visible || s.manualPause || !s.player) return;
-        try { s.player.mute(); s.player.playVideo(); } catch (_) {}
-    };
-    const createPlayers = () => {
-        frames.forEach(frame => {
-            const s = state.get(frame);
-            s.player = new YT.Player(frame, { events: {
-                onReady: () => begin(frame),
-                onStateChange: e => {
-                    const current = state.get(frame);
-                    if (e.data === YT.PlayerState.PAUSED && current.visible && !current.visibilityPause) current.manualPause = true;
-                    if (e.data === YT.PlayerState.PLAYING) current.manualPause = false;
-                }
-            }});
-        });
-    };
-    window.onYouTubeIframeAPIReady = createPlayers;
-    if (window.YT && window.YT.Player) createPlayers();
-    else if (!document.querySelector('script[data-youtube-iframe-api]')) {
-        const api = document.createElement('script');
-        api.src = 'https://www.youtube.com/iframe_api'; api.async = true; api.dataset.youtubeIframeApi = 'true';
-        document.head.appendChild(api);
-    }
-
-    const observer = new IntersectionObserver(entries => entries.forEach(entry => {
-        const frame = entry.target, s = state.get(frame), visible = entry.isIntersecting && entry.intersectionRatio >= 0.55;
-        if (visible && !s.visible) { s.visible = true; s.manualPause = false; begin(frame); }
-        else if (!visible && s.visible) {
-            s.visible = false; s.manualPause = false;
-            if (s.player) {
-                s.visibilityPause = true;
-                try { s.player.pauseVideo(); } catch (_) {}
-                window.setTimeout(() => { s.visibilityPause = false; }, 300);
-            }
-        }
-    }), {threshold:[0,0.55,0.8]});
-    frames.forEach(frame => observer.observe(frame));
+// Contact form opens a prepared email draft; it never sends automatically.
+(() => {
+ const form=document.querySelector('#contact-form');
+ form?.addEventListener('submit',event=>{
+  event.preventDefault();const data=new FormData(form);
+  const name=String(data.get('name')||'').trim(), sender=String(data.get('email')||'').trim();
+  const subject=String(data.get('subject')||'').trim(), message=String(data.get('message')||'').trim();
+  const body=`Name: ${name}\\nEmail: ${sender}\\n\\n${message}`;
+  window.location.href=`mailto:alyyanawan19@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+ });
 })();
