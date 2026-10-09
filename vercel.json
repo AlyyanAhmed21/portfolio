@@ -3,10 +3,7 @@
   "builds": [
     {
       "src": "server.js",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": "{index.html,style.css,main.js,restaurant-ai.html,restaurant-ai.css,restaurant-ai.js,assets/**,imgs/**}"
-      }
+      "use": "@vercel/node"
     }
   ],
   "routes": [
