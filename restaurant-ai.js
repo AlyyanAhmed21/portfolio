@@ -127,7 +127,7 @@ document.querySelector('#contact-form')?.addEventListener('submit', event => {
 });
 
 // YouTube: muted autoplay while visible, pause outside the viewport.
-// Native controls are hidden in the embed URL; YouTube may still show branding/overlays.
+// Native YouTube controls stay enabled so viewers retain volume, captions, and quality settings.
 (function setupYouTubeVisibilityPlayback() {
     const frames = [...document.querySelectorAll('.video-frame iframe')];
     if (!frames.length) return;
