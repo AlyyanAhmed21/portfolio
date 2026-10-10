@@ -6,7 +6,7 @@
       "src": "server.js",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": "{index.html,style.css,main.js,restaurant-ai.html,restaurant-ai.css,restaurant-ai.js,assets/**,imgs/**}"
+        "includeFiles": "{index.html,style.css,main.js,restaurant-ai.html,restaurant-ai.css,restaurant-ai.js,ai-voice-receptionist.html,ai-voice-receptionist.css,ai-voice-receptionist.js,assets/**,imgs/**}"
       }
     }
   ],
