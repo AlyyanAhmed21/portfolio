@@ -250,3 +250,48 @@ if (contactForm) {
   window.location.href=`mailto:alyyanawan19@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
  });
 })();
+
+
+// Shared Other Projects dropdown
+(() => {
+  document.querySelectorAll('.portfolio-project-menu').forEach(menu => {
+    const button = menu.querySelector('.portfolio-project-toggle');
+    if (!button) return;
+    button.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      button.setAttribute('aria-expanded', String(open));
+    });
+    document.addEventListener('click', event => {
+      if (!menu.contains(event.target)) { menu.classList.remove('open'); button.setAttribute('aria-expanded', 'false'); }
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') { menu.classList.remove('open'); button.setAttribute('aria-expanded', 'false'); button.focus(); }
+    });
+  });
+})();
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.project-switcher').forEach(menu => {
+    const button = menu.querySelector('.project-switcher-toggle');
+    if (!button) return;
+    button.addEventListener('click', event => {
+      event.stopPropagation();
+      const open = menu.classList.toggle('is-open');
+      button.setAttribute('aria-expanded', String(open));
+    });
+    document.addEventListener('click', event => {
+      if (!menu.contains(event.target)) {
+        menu.classList.remove('is-open');
+        button.setAttribute('aria-expanded', 'false');
+      }
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        menu.classList.remove('is-open');
+        button.setAttribute('aria-expanded', 'false');
+        button.focus();
+      }
+    });
+  });
+});
