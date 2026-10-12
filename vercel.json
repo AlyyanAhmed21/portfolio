@@ -5,7 +5,7 @@
       "src": "server.js",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": "{index.html,style.css,main.js,restaurant-ai.html,restaurant-ai.css,restaurant-ai.js,ai-voice-receptionist.html,ai-voice-receptionist.css,ai-voice-receptionist.js,ai-operations-hub.html,ai-operations-hub.css,ai-operations-hub.js,assets/**,imgs/**}"
+        "includeFiles": "{index.html,style.css,main.js,restaurant-ai.html,restaurant-ai.css,restaurant-ai.js,ai-voice-receptionist.html,ai-voice-receptionist.css,ai-voice-receptionist.js,ai-operations-hub.html,ai-operations-hub.css,ai-operations-hub.js,dineflow-whatsapp-ai.html,dineflow-whatsapp-ai.css,dineflow-whatsapp-ai.js,assets/**,imgs/**}"
       }
     }
   ],
